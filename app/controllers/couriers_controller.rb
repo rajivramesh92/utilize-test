@@ -2,7 +2,7 @@ class CouriersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @couriers = current_user.couriers
+    @couriers = current_user.received_orders
   end
 
   def new

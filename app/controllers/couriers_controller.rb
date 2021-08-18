@@ -17,7 +17,7 @@ class CouriersController < ApplicationController
   end
 
   def new
-    @courier = current_user.couriers.new
+    @courier = current_user.couriers.build
     @users = User.where.not(id: current_user.id).pluck(:full_name, :id)
   end
 
@@ -26,7 +26,7 @@ class CouriersController < ApplicationController
     if @courier.valid?
       redirect_to couriers_path
     else
-      @users = User.where.not(id: current_user.id).include(:address).pluck(:full_name, :id)
+      @users = User.where.not(id: current_user.id).includes(:address).pluck(:full_name, :id)
       render 'new'
     end
   end

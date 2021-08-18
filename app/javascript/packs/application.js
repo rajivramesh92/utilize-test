@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 require("bootstrap")
+require("scripts")
 import "../stylesheets/application";
 document.addEventListener("turbolinks:load", function() {
     $(function () {

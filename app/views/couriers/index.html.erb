@@ -1,11 +1,12 @@
-<div class= "d-flex justify-content-center">
-  <%= form_tag (search_order_couriers_path) do %>
-    <div class="form-group">
-      <%= label_tag "Order Number", "Order Number", class: "form-label" %><br/>
-      <%= text_field_tag "order_number", '', class: 'form-control', placeholder: 'Search by order number' %>
-    </div>
-    <div class="mt-3">
-      <%= submit_tag "Search", class: 'btn btn-primary' %>
-    </div>
-  <%end%>
-</div>
+<h2>My Order</h2>
+<%= form_tag (search_order_couriers_path) do %>
+  <div class="form-group">
+    <%= label_tag "Order Number" %>
+    <%= text_field_tag "order_number", '', class: 'form-control', placeholder: 'Search by order number' %>
+  </div>
+  <div class="mt-3">
+    <%= submit_tag "Search", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+

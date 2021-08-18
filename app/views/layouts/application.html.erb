@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>UtilizeTest</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,14 +13,12 @@
   </head>
 
   <body>
-    <div style="margin:30px;">
-      <%if current_user.present?%>
-        <%= link_to "Logout", destroy_user_session_path %>
-      <%else%>
-        <%= link_to "Login", new_user_session_path %>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      <%end%>
-    </div>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <section class="pt-4">
+      <div class="container px-lg-5">
+        <%= yield %>
+      </div>
+    </section>
+    <%= render "layouts/footer" %>
   </body>
 </html>

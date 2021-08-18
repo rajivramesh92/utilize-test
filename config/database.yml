@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
+  username: postgres_rails
   password: postgres
   host: localhost
 

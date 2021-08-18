@@ -8,10 +8,15 @@ class Courier < ApplicationRecord
   validates :weight, :status, :service_type, :payment_mode, :cost, presence: true
 
   validates :order_number, presence: true, uniqueness: true
+  after_create :send_mail_to_receiver
 
   def save_details
     self.order_number = "ORDER-#{SecureRandom.hex(6)}"
     self.status = 'Sent'
-    self.address = self.receiver.address
+    self.address_id = self.receiver.address.id if self.receiver.address.present?
+  end
+
+  def send_mail_to_receiver
+    UserMailer.send_mail_to_receiver(self.receiver, self).deliver_now
   end
 end

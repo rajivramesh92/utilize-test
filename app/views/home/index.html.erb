@@ -1,1 +1,5 @@
 <div style="text-align: center;"><h2>Welcome to Utilize Test</h2></>
+<% if current_user.present?%>
+  <%= link_to "Created Order", new_courier_path, class: 'btn btn-success'%>
+  <%= link_to "My Orders", couriers_path, class: 'btn btn-primary ml-2'%>
+<%end%>

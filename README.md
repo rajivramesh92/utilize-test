@@ -5,20 +5,12 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+ruby version 2.7.1
 
-* System dependencies
+rails version 6.1.4
 
-* Configuration
+node version above 10(any version)
 
-* Database creation
+yarn
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+postgres 12 or 13

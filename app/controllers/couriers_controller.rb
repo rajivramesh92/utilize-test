@@ -3,16 +3,18 @@ class CouriersController < ApplicationController
   before_action :set_order, only: :show
 
   def index
-    @couriers = current_user.received_orders
+    @received_orders = current_user.received_orders
+    @sent_orders = current_user.sent_orders
   end
 
   def search_order
     @courier = Courier.find_by(order_number: params[:order_number])
     if @courier.present?
+      flash[:info] = "Order found."
       redirect_to courier_path(@courier.id)
     else
-      @couriers = current_user.received_orders
-      render 'index'
+      flash[:danger] = "Order not found."
+      redirect_to couriers_path
     end
   end
 
@@ -24,6 +26,7 @@ class CouriersController < ApplicationController
   def create
     @courier = current_user.couriers.create(courier_params)
     if @courier.valid?
+      flash[:info] = "Order Created Successfully."
       redirect_to couriers_path
     else
       @users = User.where.not(id: current_user.id).includes(:address).pluck(:full_name, :id)

@@ -3,6 +3,10 @@ class Courier < ApplicationRecord
   belongs_to :address
   belongs_to :receiver, class_name: 'User', foreign_key: 'receiver_id'
 
+  STATUS_OPTIONS = %w(Sent In-Transit Delivered)
+
+  validates :status, :inclusion => {:in => STATUS_OPTIONS}
+
   before_validation :save_details, :if => Proc.new {|model| model.new_record? }
 
   validates :weight, :status, :service_type, :payment_mode, :cost, presence: true
